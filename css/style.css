@@ -6,6 +6,14 @@
     --dark: #181d38;
 }
 
+.butn-info{
+    margin-top: 50px ;
+    text-align: center ;
+    color: #181d38 ;
+    font-family: 'Gill Sans', sans-serif
+}
+
+
 .fw-medium {
     font-weight: 500 !important;
 }
