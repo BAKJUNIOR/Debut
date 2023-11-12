@@ -1,15 +1,14 @@
 /********** Template CSS **********/
 :root {
     --primary: #ff5f0e;
-    --secondary: #181d38;
+    --secondary: #061259 ;
     --light: #F5F5F5;
-    --dark: #181d38;
+    --dark: #061259 ;
 }
 
 .butn-info{
     margin-top: 50px ;
     text-align: center ;
-    color: #181d38 ;
     font-family: 'Gill Sans', sans-serif
 }
 
@@ -463,29 +462,29 @@
 .testimonial-carousel {
     display: flex !important;
     flex-direction: column-reverse;
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .testimonial-carousel .owl-dots {
-    height: 100px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .testimonial-carousel .owl-dots .owl-dot {
     position: relative;
-    width: 60px;
+    width: 100px;
     height: 60px;
-    margin: 0 5px;
-    transition: .5s;
+    margin: 0 9px;
+    transition: .9s;
 }
 
 .testimonial-carousel .owl-dots .owl-dot.active {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .testimonial-carousel .owl-dots .owl-dot::after {
