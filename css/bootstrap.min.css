@@ -2538,7 +2538,7 @@ fieldset:disabled .btn {
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
     color:#000;
-    background-color:#3348c3 ;
+    background-color:#061259 ;
     border-color:#3348c3 ;
     box-shadow:0 0 0 .25rem hsl(20, 100%, 53%);
 }
