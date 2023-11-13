@@ -11,16 +11,16 @@
     --bs-red: #dc3545;
     --bs-orange: #fd7e14;
     --bs-yellow: #ffc107;
-    --bs-green: #198754;
-    --bs-teal: #20c997;
+    --bs-green: #ff5f0e;
+    --bs-teal: #ff5f0e;
     --bs-cyan: #0dcaf0;
     --bs-white: #fff;
     --bs-gray: #6c757d;
     --bs-gray-dark: #343a40;
     --bs-primary: #ff5f0e;
     --bs-secondary:  #3348c3 ;
-    --bs-success: #198754;
-    --bs-info: #0dcaf0;
+    --bs-success: #ff5f0e;
+    --bs-info: #ff5f0e;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
     --bs-light: #f5f5f5;
@@ -498,7 +498,7 @@ progress {
     content:"\2014\00A0"
 }
 .img-fluid {
-    max-width:200%;
+    max-width:100%;
     height:auto
 }
 .img-thumbnail {
@@ -1831,9 +1831,9 @@ progress {
 .form-control:focus {
     color:#9B9B9B;
     background-color:#fff;
-    border-color:#b2da98;
+    border-color:#ff5f0e;
     outline:0;
-    box-shadow:0 0 0 .25rem rgba(101,181,48,0.25)
+    box-shadow:0 0 0 .25rem #ff5f0e
 }
 .form-control::-webkit-date-and-time-value {
     height:1.5em
@@ -2319,7 +2319,7 @@ textarea.form-control-lg {
     width:100%;
     margin-top:.25rem;
     font-size:.875em;
-    color:#198754
+    color:#ff5f0e
 }
 .valid-tooltip {
     position:absolute;
@@ -2331,7 +2331,7 @@ textarea.form-control-lg {
     margin-top:.1rem;
     font-size:.875rem;
     color:#fff;
-    background-color:rgba(25,135,84,0.9);
+    background-color:#ff5f0e;
     border-radius:6px
 }
 .was-validated :valid ~ .valid-feedback,
@@ -2342,7 +2342,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-control:valid,
 .form-control.is-valid {
-    border-color:#198754;
+    border-color:#ff5f0e;
     padding-right:calc(1.5em + .75rem);
     background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
     background-repeat:no-repeat;
@@ -2351,7 +2351,7 @@ textarea.form-control-lg {
 }
 .was-validated .form-control:valid:focus,
 .form-control.is-valid:focus {
-    border-color:#198754;
+    border-color:#ff5f0e;
     box-shadow:0 0 0 .25rem rgba(25,135,84,0.25)
 }
 .was-validated textarea.form-control:valid,
@@ -2361,7 +2361,7 @@ textarea.form-control.is-valid {
 }
 .was-validated .form-select:valid,
 .form-select.is-valid {
-    border-color:#198754
+    border-color:#ff5f0e
 }
 .was-validated .form-select:valid:not([multiple]):not([size]),
 .was-validated .form-select:valid:not([multiple])[size="1"],
@@ -2532,8 +2532,8 @@ fieldset:disabled .btn {
 }
 .btn-primary:hover {
     color:#000;
-    background-color: #3348c3 ;
-    border-color:#3348c3 
+    background-color:#061259 ;
+    border-color:#061259
 }
 .btn-check:focus+.btn-primary,
 .btn-primary:focus {
@@ -2562,7 +2562,7 @@ fieldset:disabled .btn {
 .btn-primary.disabled {
     color:#000;
     background-color:#ff5f0e;
-    border-color:#ff5f0e
+    border-color: #061259
 }
 .btn-secondary {
     color:#000;
