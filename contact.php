@@ -134,17 +134,19 @@
                             <h1 class="display-5 mb-4">Contactez-nous</h1>
                         </div>
                         <p class="mb-4" style="color: black">Nous sommes ravis de vous entendre ! N'hésitez pas à partager vos questions, demandes ou commentaires. Notre équipe dévouée est prête à vous assister. Remplissez le formulaire ci-dessous, et nous vous contacterons dans les plus brefs délais</p>
-                        <form>
+
+                        <form method="post">
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" name="nom" class="form-control" id="name" placeholder="Your Name">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" name="mail" class="form-control" id="email" placeholder="Your Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
@@ -156,13 +158,37 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Envoyer le message</button>
                                 </div>
+
+
+                                <?php
+
+                                $to = "bakayokobassindoujunior0150@gmail.com";
+                                $subject= "Utilisation du mail () avec php en local";
+                                $message = "coucou je tu recoit se message c'est que j'ai recu mon projet";
+                                $headers = "Content-Type: text/plain; charset=utf-8\r\n";
+                                $headers .= "From: smtp.gmail.com";
+
+                                if (mail($to,$subject,$message,$headers))
+                                    echo 'Envoyer !';
+                                else
+                                    echo "Erreur d'envoie";
+                                /*
+                                $retour = mail("bakbassjunior@gmail.com", "essai" , "coucou c'est junior" , "");
+                                if ($retour){
+                                    echo " L'Email a été envoyer ";
+                                } else
+                                    echo  " Erreur "*/
+                                ?>
+
+
+
                             </div>
                         </form>
                     </div>
@@ -179,6 +205,14 @@
         </div>
     </div>
     <!-- Contact End -->
+
+<div class="container-fluid bg-light overflow-hidden px-lg-0">
+    <div class="container contact px-lg-0">
+        phh
+    </div>
+
+</div>
+
 
 
 <!-- Footer Start -->
