@@ -1,299 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="utf-8">
-    <title>Groupe Laroche</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Le formulaire a été soumis
 
-    <!-- Favicon -->
-    <link href="img/Logo.png" rel="icon">
+    if (isset($_POST['message'])) {
+        // Validation et traitement des données (comme indiqué dans la réponse précédente)
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+        $to = $_POST['email'];
+        $entete = 'MIME-Version: 1.0' . "\r\n";
+        $entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+        $entete .= 'From: smtp.gmail.com' . "\r\n";
+        $entete .= 'Reply-to: ' . $_POST['email'];
+        $subject = $_POST['subject'];
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        $message = '<h1>Message envoyé depuis la page Contact de GroupeLaroche.com</h1>
+                                    <p>
+                                    <b>Nom : </b>' . $_POST['nom'] . '<br>
+                                    <b>Email : </b>' . $_POST['email'] . '<br>
+                                    
+                                    <b>Message : </b>' . htmlspecialchars($_POST['message']) . '</p>';
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        $retour = mail($to, $subject, $message, $entete);
+        $send = $retour;
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-<!-- Spinner Start -->
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-</div>
-<!-- Spinner End -->
+        // vérification de l'envoi
+        if ($send) {
+            $_SESSION['succes_messages'] = "Message envoyé";
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit();
+        } else {
+            echo "Échec de l'envoi";
+        }
+    }
+}
 
 
-<!-- Topbar Start -->
-<div class="container-fluid bg-dark px-5">
-    <div class="row gx-4 d-none d-lg-flex">
-        <div class="col-lg-6 text-start">
-            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                <div class="btn-sm-square rounded-circle bg-primary me-2">
-                    <small class="fa fa-envelope-open text-white"></small>
-                </div>
-                <small>info@g-laroche.com</small>
-            </div>
-            <div class="h-100 d-inline-flex align-items-center py-3">
-
-                <div class="btn-sm-square rounded-circle bg-primary me-2">
-                    <small class="fa fa-map-marker-alt text-white"></small>
-                </div>
-                <small>Cocody, II Plateaux Angré, 9ième tranche , Immeuble BNI</small>
-            </div>
-        </div>
-        <div class="col-lg-6 text-end">
-            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                <div class="btn-sm-square rounded-circle bg-primary me-2">
-                    <small class="fa fa-phone-alt text-white"></small>
-                </div>
-                <small>+225 27 22 53 70 54</small>
-            </div>
-            <div class="h-100 d-inline-flex align-items-center py-3">
-                <div class="btn-sm-square rounded-circle bg-primary me-2">
-                    <small class="far fa-clock text-white"></small>
-                </div>
-                <small> <iframe name="date du jour" id="date-du-jour" style="width:95px;height:75px;" src="https://www.mathieuweb.fr/calendrier/date-jour-blanc.html" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-                </small>
-
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Topbar End -->
-
-
-<!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
-    <a href="index.html" class="navbar-brand d-flex align-items-center">
-        <h2 class="m-0 text-primary"><img class="navbar-brand d-flex align-items-center" src="img/Logo.png"></h2>
-    </a>
-    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto py-4 py-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Accueil</a>
-            <a href="about.html" class="nav-item nav-link">A propos</a>
-            <a href="service.html" class="nav-item nav-link">Services</a>
-            <a href="contact.html" class="nav-item nav-link">Contact</a>
-        </div>
-        <div class="h-100 d-lg-inline-flex align-items-center d-none">
-            <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="https://web.facebook.com/profile.php?id=100065400883068&sk=about"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-square rounded-circle bg-light text-primary me-2" href="mailto:moussa.sawadogo@g-laroche.com"><i class='fas fa-envelope'></i></a>
-            <a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab fa-linkedin-in"></i></a>
-            <a class="btn btn-square rounded-circle bg-light text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-</nav>
-<!-- Navbar End -->
-
-
-<!-- Page Header Start -->
-    <div class="container-fluid page-header py-5">
-        <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Contact</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="index.html">Accueil</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="about.html">A propos</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="service.html">services</a></li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
-
-
-    <!-- Contact Start -->
-    <div class="container-fluid bg-light overflow-hidden px-lg-0">
-        <div class="container contact px-lg-0">
-            <div class="row g-0 mx-lg-0">
-                <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="p-lg-5 ps-lg-0">
-                        <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">Contactez-nous</h1>
-                        </div>
-                        <p class="mb-4" style="color: black">Nous sommes ravis de vous entendre ! N'hésitez pas à partager vos questions, demandes ou commentaires. Notre équipe dévouée est prête à vous assister. Remplissez le formulaire ci-dessous, et nous vous contacterons dans les plus brefs délais</p>
-
-                        <form method="post">
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" name="nom" class="form-control" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="email" name="mail" class="form-control" id="email" placeholder="Your Email" required>
-                                        <label for="email">Your Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Subject</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
-                                        <label for="message">Message</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Envoyer le message</button>
-                                </div>
-
-
-                                <?php
-
-                                $to = "bakayokobassindoujunior0150@gmail.com";
-                                $subject= "Utilisation du mail () avec php en local";
-                                $message = "coucou je tu recoit se message c'est que j'ai recu mon projet";
-                                $headers = "Content-Type: text/plain; charset=utf-8\r\n";
-                                $headers .= "From: smtp.gmail.com";
-
-                                if (mail($to,$subject,$message,$headers))
-                                    echo 'Envoyer !';
-                                else
-                                    echo "Erreur d'envoie";
-                                /*
-                                $retour = mail("bakbassjunior@gmail.com", "essai" , "coucou c'est junior" , "");
-                                if ($retour){
-                                    echo " L'Email a été envoyer ";
-                                } else
-                                    echo  " Erreur "*/
-                                ?>
-
-
-
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-
-                        <iframe class="position-absolute w-100 h-100" style="object-fit: cover;"  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15888.86964349493!2d-3.973689!3d5.3837937!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1939773959181%3A0xbeb207c0c7084621!2sGroupe%20Laroche!5e0!3m2!1sfr!2sci!4v1699544248413!5m2!1sfr!2sci" width="800" height="600" style="border:0;"
-                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Contact End -->
-
-<div class="container-fluid bg-light overflow-hidden px-lg-0">
-    <div class="container contact px-lg-0">
-        phh
-    </div>
-
-</div>
-
-
-
-<!-- Footer Start -->
-<div class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-1">
-
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Address</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Cocody, II Plateaux Angré, 9ième tranche , Immeuble BNI</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+225 27 22 53 70 54</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@g-laroche.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i class='fas fa-envelope'></i></a>
-                    <a class="btn btn-square btn-outline-secondary rounded-circle me-2" href=""><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Prestations de service </h5>
-                <a class="btn btn-link" href="service.html">Consulting (GED-ERP, sécurité informatique, solution supervision, messagerie Exchange</a>
-                <a class="btn btn-link" href="service.html">Infrastructure système (datacenter, virtualisation</a>
-                <a class="btn btn-link" href="service.html">Vente de matériel informatique et licensing (datacenter, desktop, laptop, imprimante et consommable)</a>
-
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4">Liens rapides</h5>
-                <a class="btn btn-link" href="about.html">A propos</a>
-                <a class="btn btn-link" href="contact.html">Contact</a>
-                <a class="btn btn-link" href="service.html">Services</a>
-            </div>
-
-
-
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-light mb-4"><a href="index.html"><img src="img/Logo.png" width="45%"></a> </h5>
-                <p>Inscrivez-vous pour nos dernières nouvelles et articles.</p>
-                <div class="position-relative w-100">
-                    <input class="form-control bg-transparent border-secondary w-100 py-3 ps-4 pe-5" type="text" placeholder="Email">
-                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">S'inscrire</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer End -->
-
-
-<!-- Copyright Start -->
-<div class="container-fluid py-4" style="background: #000000;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                &copy; copyright 2023 by , <a href=""><span style="color: #ff6600" >Groupe Laroche TIC</span></a>
-            </div>
-
-        </div>
-    </div>
-</div>
-</div>
-<!-- Copyright End -->
-
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="lib/wow/wow.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/waypoints/waypoints.min.js"></script>
-<script src="lib/counterup/counterup.min.js"></script>
-<script src="lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="lib/isotope/isotope.pkgd.min.js"></script>
-<script src="lib/lightbox/js/lightbox.min.js"></script>
-
-<!-- Template Javascript -->
-<script src="js/main.js"></script>
-</body>
-
-</html>

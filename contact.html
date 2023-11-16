@@ -108,15 +108,14 @@
 <!-- Navbar End -->
 
 
-
 <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5">
+    <div class="container-fluid page-header py-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">A propos</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Contact</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="index.html">Accueil</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="contact.html">Contact</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="about.html">A propos</a></li>
                     <li class="breadcrumb-item"><a class="text-white" href="service.html">services</a></li>
                 </ol>
             </nav>
@@ -124,123 +123,105 @@
     </div>
     <!-- Page Header End -->
 
-<!-- Facts Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.1s">
-                <div class="h-100 bg-dark p-4 p-xl-5">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <div class="btn-square rounded-circle" style="width: 75px; height: 75px; background: #ffffff;">
-                            <img class="img-fluid" src="img/icon/icon-consulting.png" alt="Icon">
-                        </div>
-                        <h1 class="display-1 mb-0" style="color: #ffffff;">01</h1>
-                    </div>
-                    <h5 class="text-primary">CONSULTING</h5>
-                    <hr class="w-25">
-                    <span> Spécialistes du consulting en ingénierie informatique. Découvrez comment nous pouvons améliorer vos systèmes </span>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                <div class="h-100 bg-dark p-4 p-xl-5">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <div class="btn-square rounded-circle" style="width: 75px; height: 75px; background: #ffffff;">
-                            <img class="img-fluid" src="img/icon/icon-system.png" alt="Icon">
 
+    <!-- Contact Start -->
+    <div class="container-fluid bg-light overflow-hidden px-lg-0">
+        <div class="container contact px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <div class="section-title text-start">
+                            <h1 class="display-5 mb-4">Contactez-nous</h1>
                         </div>
-                        <h1 class="display-1 mb-0" style="color: #ffffff;">02</h1>
+                        <p class="mb-4" style="color: black">Nous sommes ravis de vous entendre ! N'hésitez pas à partager vos questions, demandes ou commentaires. Notre équipe dévouée est prête à vous assister. Remplissez le formulaire ci-dessous, et nous vous contacterons dans les plus brefs délais</p>
+
+                        <form id="formulaire-contact" method="post" action="contact.php">
+
+
+                            <div class="alert alert-success" id="message-succes" style="display: none;">
+                                Message envoyé avec succès!
+                            </div>
+
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" name="nom" class="form-control" id="name" placeholder="Your Name">
+                                        <label for="name" style="color: black">votre nom</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Your Email" required>
+                                        <label for="email" style="color: black">votre email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" name="subject" class="form-control" id="subject" placeholder="Subject">
+                                        <label for="subject" style="color: black">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <label for="message" style="color: black">Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" id="bouton-submit" type="button" onclick="envoyerMessage()">Envoyer le message</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <script>
+                            function envoyerMessage() {
+                                // Collectez les données du formulaire
+                                var formData = new FormData(document.getElementById("formulaire-contact"));
+
+                                // Effectuez une requête AJAX pour envoyer les données au serveur
+                                var xhr = new XMLHttpRequest();
+                                xhr.open("POST", "contact.php", true);
+                                xhr.onload = function () {
+                                    if (xhr.status == 200) {
+                                        // Réussite
+                                        document.getElementById("message-succes").style.display = "block";
+                                        // Rafraîchissez les champs du formulaire
+                                        document.getElementById("formulaire-contact").reset();
+                                    } else {
+                                        // Échec
+                                        alert("Échec de l'envoi du message. Veuillez réessayer.");
+                                    }
+                                };
+                                xhr.send(formData);
+                            }
+                        </script>
+
+
+
+
                     </div>
-                    <h5 class="text-primary" >INFRASTRUCTURE SYSTEME ET RESEAU</h5>
-                    <hr class="w-25">
-                    <span> Votre partenaire en infrastructure système et réseau. Optez pour des solutions fiables et sécurisées </span>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                <div class="h-100 bg-dark p-4 p-xl-5">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <div class="btn-square rounded-circle" style="width: 75px; height: 75px; background: #ffffff;">
-                            <img class="img-fluid" src="img/icon/icon-materiel.png " alt="Icon">
-                        </div>
-                        <h1 class="display-1 mb-0" style="color: #ffffff;">03</h1>
+                <div class="col-lg-6 pe-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+
+                        <iframe class="position-absolute w-100 h-100" style="object-fit: cover;"  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15888.86964349493!2d-3.973689!3d5.3837937!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1939773959181%3A0xbeb207c0c7084621!2sGroupe%20Laroche!5e0!3m2!1sfr!2sci!4v1699544248413!5m2!1sfr!2sci" width="800" height="600" style="border:0;"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                     </div>
-                    <h5 class="text-primary"  >VENTE DE MATERIEL INFORMATIQUE ET LICENSING</h5>
-                    <hr class="w-25">
-                    <span> Experts en vente de matériel informatique et licensing. Obtenez les meilleures solutions pour votre entreprise</span>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Facts Start -->
+    <!-- Contact End -->
 
-
-<!-- About Start -->
-<div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
-    <div class="container about px-lg-0">
-        <div class="row g-0 mx-lg-0">
-            <div class="col-lg-6 ps-lg-0" style="min-height: 400px;">
-                <div class="position-relative h-100">
-
-                    <video id="video" autoplay muted playsinline loop onClick="this.pause(); this.muted=false; this.play();" class="position-absolute img-fluid w-100 h-100" style="object-fit: cover">
-                        <source src="videos/video.mp4" type="video/mp4">
-                    </video>
-                    <style>
-                        video::cue {
-                            font-size: 150%;
-                        }
-                        video {
-                            width:100%;
-                        }
-                    </style>
-
-                    </video>
-                    <p>
-                </div>
-            </div>
-            <div class="col-lg-6 about-text py-5 wow fadeIn" data-wow-delay="0.5s">
-                <div class="p-lg-5 pe-lg-0">
-                    <div class="bg-primary mb-3" style="width: 100px; height: 3px;"></div>
-                    <h1 class="display-5 mb-4">À propos de Groupe Laroche TIC</h1>
-                    <p class=" mb-4"  style="color: #0a0a0a ; font-size:calc(1.122rem + 2.1vw);font-weight:400;line-height:1.2;font-size:2.5rem">Le meilleur choix pour votre Entreprise prospère</p>
-                    <p class="mb-4 pb-2" style="color: #0a0a0a">
-
-                        <a href=""><span style="color: #ff6600" >Groupe Laroche TIC</span> </a>, est une société de services en ingénierie informatique positionnée en tant que partenaire informatique accompagnant les entreprises dans la mise en œuvre de leurs systèmes d'information.
-                        Notre expertise s'articule autour de la vente de matériel et de solutions informatiques. Les solutions et services que nous proposons répondent à vos besoins et ont l'avantage de faciliter le travail quotidien, améliorant ainsi la productivité au sein de votre entreprise.
-                        Le Groupe Laroche est une société expérimentée et dynamique, composée d'ingénieurs certifiés ayant une expérience professionnelle de plusieurs années dans les domaines des TIC.
-
-                    </p>
-                    <div class="row g-4 mb-4 pb-3">
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="d-flex align-items-center">
-                                <div class="btn-square bg-white rounded-circle" style="width: 84px; height: 84px;">
-                                    <img class="img-fluid" src="img/icon/clients.png" alt="Icon">
-                                </div>
-                                <div class="ms-4">
-                                    <h2 class="mb-1" data-toggle="counter-up">1400</h2>
-                                    <p class="fw-medium text-primary mb-0">Clients satisfaits</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="d-flex align-items-center">
-                                <div class="btn-square bg-white rounded-circle" style="width: 84px; height: 84px;">
-                                    <img class="img-fluid" src="img/icon/projet.png" alt="Icon">
-                                </div>
-                                <div class="ms-4">
-                                    <h2 class="mb-1" data-toggle="counter-up">1234</h2>
-                                    <p class="fw-medium text-primary mb-0">Projets réalisés </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="btn btn-primary rounded-pill py-3 px-5">En savoir plus</a>
-                </div>
-            </div>
-        </div>
+<div class="container-fluid bg-light overflow-hidden px-lg-0">
+    <div class="container contact px-lg-0">
+        phh
     </div>
-</div>
-<!-- About End -->
 
+</div>
 
 
 
