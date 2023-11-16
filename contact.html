@@ -134,29 +134,31 @@
                             <h1 class="display-5 mb-4">Contactez-nous</h1>
                         </div>
                         <p class="mb-4" style="color: black">Nous sommes ravis de vous entendre ! N'hésitez pas à partager vos questions, demandes ou commentaires. Notre équipe dévouée est prête à vous assister. Remplissez le formulaire ci-dessous, et nous vous contacterons dans les plus brefs délais</p>
-                        <form>
+
+                        <form method="post">
+
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                        <input type="text" name="nom" class="form-control" id="name" placeholder="Your Name" required="">
                                         <label for="name">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="email" name="mail" class="form-control" id="email" placeholder="Your Email" required="">
                                         <label for="email">Your Email</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                        <input type="text" class="form-control" id="subject" placeholder="Subject" required="">
                                         <label for="subject">Subject</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                        <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
                                         <label for="message">Message</label>
                                     </div>
                                 </div>
@@ -179,6 +181,14 @@
         </div>
     </div>
     <!-- Contact End -->
+
+<div class="container-fluid bg-light overflow-hidden px-lg-0">
+    <div class="container contact px-lg-0">
+        phh
+    </div>
+
+</div>
+
 
 
 <!-- Footer Start -->
